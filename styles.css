@@ -106,3 +106,47 @@ body::before { content:""; position:fixed; z-index:30; inset:0; pointer-events:n
 /* Practical-details motif: reserved reading lanes with desert-orbit anchors */
 .details::after { inset:0; opacity:1; background-image:radial-gradient(circle at 16.66% 112%,transparent 0 113px,rgba(233,221,203,.2) 114px 115px,transparent 116px 137px),radial-gradient(circle at 50% 112%,transparent 0 113px,rgba(233,221,203,.2) 114px 115px,transparent 116px 137px),radial-gradient(circle at 83.33% 112%,transparent 0 113px,rgba(233,221,203,.2) 114px 115px,transparent 116px 137px),linear-gradient(90deg,transparent calc(33.33% - 1px),rgba(233,221,203,.1) calc(33.33% - 1px) 33.33%,transparent 33.33% calc(66.66% - 1px),rgba(233,221,203,.1) calc(66.66% - 1px) 66.66%,transparent 66.66%); background-size:auto,auto,auto,100% 100%; background-repeat:no-repeat; background-position:center; mix-blend-mode:normal; animation:none; }.details-grid { gap:0; }.details-grid article { position:relative; min-height:350px; padding:0 38px 80px 0; }.details-grid article+article { padding-left:38px; }.details-grid article::before { position:absolute; top:-34px; right:38px; color:rgba(233,221,203,.26); font:500 64px/.8 "Playfair Display",serif; letter-spacing:-.08em; }.details-grid article:nth-child(1)::before { content:"01"; }.details-grid article:nth-child(2)::before { content:"02"; }.details-grid article:nth-child(3)::before { content:"03"; }.details-grid article .eyebrow { position:relative; z-index:1; }
 @media (max-width:720px) { .details::after { background-image:linear-gradient(90deg,transparent 20px,rgba(233,221,203,.1) 20px 21px,transparent 21px); }.details-grid article { min-height:auto; padding:30px 0 48px 28px; border-left:1px solid rgba(233,221,203,.12); }.details-grid article+article { padding-left:28px; }.details-grid article::before { top:25px; right:12px; font-size:47px; } }
+
+/* Mobile rhythm: let the weather card sit between sections, not over them. */
+@media (max-width:720px) {
+  .direct-book.section { padding-top:72px; padding-bottom:76px; }
+  .direct-book-inner { gap:18px; }
+  .direct-book h2 { margin-top:-8px; margin-bottom:4px; }
+  .direct-book::after {
+    inset:190px 0 -105px;
+    background-position:center;
+    background-size:100% 100%;
+    opacity:.34;
+  }
+
+  .weather {
+    margin-top:0 !important;
+    margin-bottom:0;
+  }
+  .weather-panel {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 46px;
+  }
+  .weather-panel > div:first-child {
+    grid-column:1;
+    grid-row:1;
+    padding:18px;
+  }
+  .weather-panel > i {
+    grid-column:2;
+    grid-row:1;
+    align-self:stretch;
+  }
+  .weather-panel .forecast {
+    grid-column:1 / -1;
+    grid-row:2;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .weather-panel .forecast span { padding:14px 9px; }
+  .weather-panel .weather-live {
+    grid-column:1 / -1;
+    grid-row:3;
+    padding:14px 18px;
+  }
+}
