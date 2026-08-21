@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Valley Resort — a private desert retreat set among the sandstone valleys of Wadi Rum, Jordan." />
-    <meta name="theme-color" content="#151411" />
+    <meta name="theme-color" content="#11110f" />
     <title>Valley Resort — Wadi Rum, Jordan</title>
+    <link rel="icon" href="assets/valley-logo.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -15,97 +16,119 @@
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-header>
       <nav class="nav shell" aria-label="Primary navigation">
-        <div class="nav-group nav-group-left"><a href="#stays">Stays</a><a href="#experience">Experiences</a><a href="#dining">Dining</a></div>
+        <div class="nav-group nav-group-left"><a href="#stays" data-nav="stays">Stays</a><a href="#experience" data-nav="experience">Experience</a><a href="#dining" data-nav="dining">Dining</a></div>
         <a class="brand" href="#home" aria-label="Valley Resort home"><img src="assets/valley-logo.webp" alt="Valley Resort" /></a>
-        <div class="nav-group nav-group-right"><a href="#arrival">Getting here</a><a href="#reviews">Reviews</a><a class="nav-cta" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check availability <span aria-hidden="true">↗</span></a></div>
+        <div class="nav-group nav-group-right"><a href="#arrival" data-nav="arrival">Getting here</a><a href="#reviews" data-nav="reviews">Reviews</a><a class="nav-book" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check availability <span aria-hidden="true">↗</span></a></div>
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu"><span>Menu</span><i aria-hidden="true"></i></button>
       </nav>
     </header>
-    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-        <div class="mobile-menu-image" aria-hidden="true"></div>
-        <div class="mobile-menu-content">
-          <p class="micro light">Navigate the resort</p>
-          <div class="mobile-links"><a href="#stays"><span>01</span> Stays</a><a href="#experience"><span>02</span> Experiences</a><a href="#dining"><span>03</span> Dining</a><a href="#arrival"><span>04</span> Getting here</a><a href="#reviews"><span>05</span> Reviews</a></div>
-          <a class="mobile-book" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check availability <span aria-hidden="true">↗</span></a>
-          <p class="mobile-location">Wadi Rum Protected Area<br />Aqaba, Jordan</p>
-        </div>
+
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
+      <div class="mobile-menu-visual" aria-hidden="true"><span>29.57° N</span><span>35.42° E</span></div>
+      <div class="mobile-menu-content">
+        <p class="eyebrow on-dark">Navigate the resort</p>
+        <div class="mobile-links"><a href="#stays"><span>01</span> Stays</a><a href="#experience"><span>02</span> Experience</a><a href="#dining"><span>03</span> Dining</a><a href="#arrival"><span>04</span> Getting here</a><a href="#reviews"><span>05</span> Reviews</a></div>
+        <a class="mobile-menu-book" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check availability <span aria-hidden="true">↗</span></a>
+        <p class="mobile-location">Wadi Rum Protected Area<br />Aqaba, Jordan</p>
       </div>
+    </div>
 
     <main id="main">
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="hero-shade"></div>
+      <section class="hero" id="home" aria-labelledby="hero-title" data-section="home">
+        <div class="hero-scrim"></div>
+        <div class="hero-contour contour" aria-hidden="true"><svg viewBox="0 0 700 700" fill="none"><path d="M643 117C510 23 320 27 190 127 42 241 20 461 151 589 262 697 460 676 575 566 688 458 752 194 643 117Z"/><path d="M594 165C485 83 332 86 226 166 110 254 93 423 195 522 284 607 436 590 527 505 616 421 680 229 594 165Z"/><path d="M529 226C452 170 349 171 276 225 195 285 187 391 254 455 316 514 418 502 480 447 542 392 592 271 529 226Z"/></svg></div>
         <div class="hero-content shell">
-          <p class="micro light">29.57° N · 35.42° E &nbsp; / &nbsp; Wadi Rum, Jordan</p>
-          <h1 id="hero-title">Where the desert<br /><em>slows time.</em></h1>
-          <div class="hero-footer"><p>A private resort set among the sandstone valleys of Wadi Rum.</p><a class="primary-button light-button" href="#stays">Explore the resort <span aria-hidden="true">↓</span></a></div>
+          <div class="hero-copy">
+            <p class="eyebrow on-dark">Wadi Rum, Jordan · 29.57° N</p>
+            <h1 id="hero-title">Where the desert<br /><em>slows time.</em></h1>
+            <p class="hero-lead">A private resort set among the sandstone valleys of Wadi Rum.</p>
+            <div class="hero-actions"><a class="button button-clay" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check availability <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="#stays">Explore the resort <span aria-hidden="true">↓</span></a></div>
+          </div>
+          <div class="light-index" aria-label="The desert day, from first light to night"><span>First light</span><i></i><i></i><i></i><i></i><i></i><i></i><span>After dark</span></div>
         </div>
-        <div class="hero-index" aria-hidden="true"><span>01</span><i></i><span>Valley Resort</span></div><p class="scroll-note" aria-hidden="true">Scroll to wander</p>
+        <div class="hero-brief"><div class="shell hero-brief-grid"><p><span>Setting</span>Inside Wadi Rum Protected Area</p><p><span>Ways to stay</span>Domes · Rooms · Two-bedroom suites</p><p><span>Plan directly</span><a href="https://wa.me/9620791206120">WhatsApp the Valley team ↗</a></p></div></div>
       </section>
 
-      <section class="manifesto section light-section" aria-labelledby="manifesto-title">
-        <div class="shell manifesto-grid">
-          <div class="manifesto-copy reveal"><p class="micro">A place apart</p><h2 id="manifesto-title">Not a stopover.<br />A different <em>horizon.</em></h2><p class="lead">Valley is held between ancient rock and open sky—a quiet base for slow mornings, long horizons, and nights gathered beneath the stars.</p><a class="text-link" href="https://valley-resort.com/about-us">Discover our story <span aria-hidden="true">↗</span></a></div>
-          <figure class="aerial-frame reveal"><img src="assets/wadi-aerial.jpg" alt="Aerial view of the sandstone valleys of Wadi Rum" /><figcaption><span>01 / Scale</span><span>Wadi Rum Protected Area</span></figcaption><div class="orbit-mark" aria-hidden="true"><i></i><b></b></div></figure>
-        </div>
-      </section>
-
-      <section class="stays section" id="stays" aria-labelledby="stays-title">
-        <div class="shell stays-heading reveal"><p class="micro light">Sleep beneath another sky</p><h2 id="stays-title">Choose your way<br />to <em>stay.</em></h2><p>Three distinct perspectives on one extraordinary landscape.</p></div>
-        <div class="stay-stage shell reveal">
-          <div class="stay-visual"><img id="stay-image" src="assets/domes.jpg" alt="Martian Domes at Valley Resort in warm evening light" /><div class="stay-counter" aria-hidden="true"><span id="stay-current">01</span><i></i><span>03</span></div></div>
-          <div class="stay-panel"><p class="micro light">Our stays</p><div class="stay-options" role="tablist" aria-label="Accommodation types">
-            <button class="stay-option is-active" type="button" role="tab" aria-selected="true" data-stay="0"><span>01</span><strong>Martian Domes</strong><small>Panoramic desert views</small></button>
-            <button class="stay-option" type="button" role="tab" aria-selected="false" data-stay="1"><span>02</span><strong>Dune Rooms</strong><small>Private sandstone patios</small></button>
-            <button class="stay-option" type="button" role="tab" aria-selected="false" data-stay="2"><span>03</span><strong>Valley Suites</strong><small>Two bedrooms · Private terrace</small></button>
-          </div><div class="stay-detail" aria-live="polite"><p id="stay-description">Geometric domes frame the desert by day and the Wadi Rum sky after dark.</p><a id="stay-link" class="text-link light-link" href="https://valley-resort.com/martain-rooms-double">Explore Martian Domes <span aria-hidden="true">↗</span></a></div></div>
+      <section class="field-note section" aria-labelledby="field-title">
+        <div class="shell field-grid">
+          <figure class="field-image reveal"><img src="assets/aerial-field.jpg" alt="Aerial view of Wadi Rum's sandstone ridges and open desert" /><figcaption><span>Field note 01</span><span>Wadi Rum Protected Area</span></figcaption></figure>
+          <div class="field-copy reveal"><p class="eyebrow">A place apart</p><h2 id="field-title">Not a stopover.<br />A horizon of <em>its own.</em></h2><p class="body-large">Valley is held between ancient rock and open sky—a quiet base for slow mornings, long horizons, and nights gathered beneath the stars.</p><div class="field-coordinate"><span>29.5721° N</span><i></i><span>35.4214° E</span></div><a class="text-link" href="https://valley-resort.com/about-us">Discover our story <span aria-hidden="true">↗</span></a></div>
         </div>
       </section>
 
-      <section class="day-story section" id="experience" aria-labelledby="day-title">
-        <div class="shell story-intro reveal"><p class="micro">A day at Valley</p><h2 id="day-title">From first light<br />to <em>firelight.</em></h2><p>The desert writes the itinerary. Begin slowly, follow the cliffs through the day, and gather when the sky turns dark.</p></div>
-        <div class="story-strip">
-          <article class="story-card story-morning reveal"><img src="assets/pool-lifestyle.jpg" alt="Guest walking beside the Valley Resort pool in morning light" /><div><span>07:10</span><h3>Morning stillness</h3><p>Clear water, long shadows, nowhere else to be.</p></div></article>
-          <article class="story-card story-afternoon reveal"><img src="assets/amphitheatre.jpg" alt="Open-air gathering space carved into the rocks of Wadi Rum" /><div><span>16:30</span><h3>Between the cliffs</h3><p>Follow ancient routes or settle into the quiet.</p></div></article>
-          <article class="story-card story-evening reveal"><img src="assets/firepit.jpg" alt="Fire pit glowing after sunset at Valley Resort" /><div><span>20:45</span><h3>Stories after dark</h3><p>Firelight, open sky, and the silence beyond.</p></div></article>
+      <section class="stays section" id="stays" aria-labelledby="stays-title" data-section="stays">
+        <div class="shell section-intro stays-intro reveal"><div><p class="eyebrow on-dark">Stay atlas · 03 perspectives</p><h2 id="stays-title">Choose the view<br />you wake <em>to.</em></h2></div><p>Three distinct ways to meet the same landscape. Compare their defining features, then continue with the stay that fits your visit.</p></div>
+        <div class="shell stay-studio reveal">
+          <div class="stay-visual"><img id="stay-image" src="assets/domes.jpg" alt="Martian Domes at Valley Resort in warm evening light" /><div class="stay-progress" aria-hidden="true"><b id="stay-mode">Auto</b><strong id="stay-current">01</strong><span></span><small>03</small></div></div>
+          <div class="stay-decision">
+            <div class="stay-tabs" role="tablist" aria-label="Accommodation types">
+              <button id="stay-tab-1" class="stay-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="stay-panel" tabindex="0" data-stay="0"><span>01</span><strong>Martian Domes</strong><small>Panoramic desert outlook</small></button>
+              <button id="stay-tab-2" class="stay-tab" type="button" role="tab" aria-selected="false" aria-controls="stay-panel" tabindex="-1" data-stay="1"><span>02</span><strong>Dune Rooms</strong><small>Private sandstone patios</small></button>
+              <button id="stay-tab-3" class="stay-tab" type="button" role="tab" aria-selected="false" aria-controls="stay-panel" tabindex="-1" data-stay="2"><span>03</span><strong>Valley Suites</strong><small>Two bedrooms · Private terrace</small></button>
+            </div>
+            <div class="stay-panel" id="stay-panel" role="tabpanel" aria-labelledby="stay-tab-1"><p class="stay-kicker" id="stay-kicker">Perspective 01 · Dome geometry</p><h3 id="stay-name">Martian Domes</h3><p id="stay-description">Geometric domes frame the desert by day and the Wadi Rum sky after dark.</p><div class="stay-actions"><a id="stay-link" class="text-link on-dark-link" href="https://valley-resort.com/martain-rooms-double">Explore this stay <span aria-hidden="true">↗</span></a><a class="button button-clay stay-book" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check dates <span aria-hidden="true">↗</span></a></div></div>
+          </div>
         </div>
       </section>
 
-      <section class="dining section" id="dining" aria-labelledby="dining-title">
-        <div class="shell dining-heading reveal"><p class="micro light">Dining & gathering</p><h2 id="dining-title">Flavours made for<br /><em>unhurried evenings.</em></h2></div>
-        <div class="shell dining-grid">
-          <a class="dining-card dining-card-large reveal" href="https://valley-resort.com/acacia-restaurant"><img src="assets/restaurant.jpg" alt="Acacia Restaurant interior at Valley Resort" /><div><p class="micro light">Acacia Restaurant</p><h3>Desert dining,<br />warmly served.</h3><span>Discover the restaurant ↗</span></div></a>
-          <a class="dining-card dining-card-small reveal" href="https://valley-resort.com/bedouin-sitting-area"><img src="assets/bedouin-lounge.jpg" alt="Colorful Bedouin sitting area around a central fire" /><div><p class="micro light">Bedouin Sitting Area</p><h3>Gather close.</h3><span>Explore the space ↗</span></div></a>
+      <section class="day section" id="experience" aria-labelledby="day-title" data-section="experience">
+        <div class="shell day-head reveal"><p class="eyebrow">A day at Valley</p><h2 id="day-title">Measured in<br /><em>changing light.</em></h2><p>The desert writes the itinerary. Begin slowly, follow the cliffs through the day, and gather when the sky turns dark.</p></div>
+        <div class="shell day-rail">
+          <article class="moment moment-morning reveal"><div class="moment-image"><img src="assets/pool-lifestyle.jpg" alt="Guest walking beside the Valley Resort pool in morning light" /><span>07:10</span></div><div><p class="eyebrow">First light</p><h3>Morning stillness</h3><p>Clear water, long shadows, nowhere else to be.</p></div></article>
+          <article class="moment moment-afternoon reveal"><div class="moment-image"><img src="assets/amphitheatre.jpg" alt="Open-air gathering space carved into Wadi Rum sandstone" /><span>16:30</span></div><div><p class="eyebrow">Stone & shade</p><h3>Between the cliffs</h3><p>Follow ancient routes or settle into the quiet.</p></div></article>
+          <article class="moment moment-night reveal"><div class="moment-image"><img src="assets/fire-circle.jpg" alt="A circular fire pit glowing after sunset at Valley Resort" /><span>20:45</span></div><div><p class="eyebrow">After dark</p><h3>Stories by firelight</h3><p>Fire, open sky, and the silence beyond.</p></div></article>
         </div>
-        <div class="shell dining-subnav reveal"><span>Also at Valley</span><a href="https://valley-resort.com/milkyway-caf%C3%A9">Milkyway Café <b aria-hidden="true">↗</b></a></div>
       </section>
 
-      <section class="details-showcase section" aria-labelledby="details-title">
-        <div class="shell details-heading reveal"><div><p class="micro">The resort in details</p><h2 id="details-title">Space to arrive.<br /><em>Room to exhale.</em></h2></div><a class="text-link" href="https://valley-resort.com/facilities">View all facilities <span aria-hidden="true">↗</span></a></div>
-        <div class="shell mosaic"><figure class="mosaic-pool reveal"><img src="assets/pool-day.webp" alt="Outdoor pool framed by palms and sandstone cliffs" /><figcaption><span>01</span> Outdoor pool</figcaption></figure><figure class="mosaic-terrace reveal"><img src="assets/terrace.jpg" alt="Private furnished terrace at Valley Resort" /><figcaption><span>02</span> Private terraces</figcaption></figure><figure class="mosaic-path reveal"><img src="assets/resort-path.jpg" alt="Valley Resort rooms and pathways among palm trees" /><figcaption><span>03</span> A village in the valley</figcaption></figure></div>
+      <section class="dining section" id="dining" aria-labelledby="dining-title" data-section="dining">
+        <div class="shell dining-head reveal"><div><p class="eyebrow on-dark">Dining & gathering</p><h2 id="dining-title">The evening<br />gathers <em>here.</em></h2></div><p>Two different rooms for the same unhurried ritual: sharing food, warmth, and the end of the day.</p></div>
+        <div class="shell dining-layout">
+          <a class="venue venue-primary reveal" href="https://valley-resort.com/acacia-restaurant"><img src="assets/restaurant.jpg" alt="Acacia Restaurant interior at Valley Resort" /><div><span>01 · Acacia Restaurant</span><h3>Desert dining,<br />warmly served.</h3><b>Discover the restaurant ↗</b></div></a>
+          <a class="venue venue-secondary reveal" href="https://valley-resort.com/bedouin-sitting-area"><img src="assets/bedouin-room.jpg" alt="Bedouin sitting room with patterned textiles around a central fireplace" /><div><span>02 · Bedouin Sitting Area</span><h3>Gather close.</h3><b>Explore the space ↗</b></div></a>
+        </div>
+        <div class="shell cafe-note reveal"><span>Also at Valley</span><a href="https://valley-resort.com/milkyway-caf%C3%A9">Milkyway Café <b aria-hidden="true">↗</b></a></div>
       </section>
 
-      <section class="arrival" id="arrival" aria-labelledby="arrival-title">
-        <div class="arrival-copy reveal"><p class="micro light">Getting here</p><h2 id="arrival-title">The desert is closer<br />than it <em>feels.</em></h2><p>Valley Resort is located inside the Wadi Rum Protected Area in Aqaba, Jordan. Our team can help make your arrival simple.</p><a class="primary-button light-button" href="https://www.google.com/maps/dir/?api=1&destination=Wadi+Rum,+Jordan" target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a><div class="arrival-contact"><span>Need help planning?</span><a href="https://wa.me/9620791206120">WhatsApp our team ↗</a></div></div>
-        <div class="route-map" aria-label="Simplified route map to Wadi Rum"><div class="route-grid" aria-hidden="true"></div><div class="route-line" aria-hidden="true"><i></i><i></i><i></i></div><div class="route-place place-amman"><span>01</span><b>Amman</b><small>Jordan</small></div><div class="route-place place-aqaba"><span>02</span><b>Aqaba</b><small>Red Sea</small></div><div class="route-place place-valley"><span>03</span><b>Valley Resort</b><small>Wadi Rum</small></div><p class="map-coordinate">29.5721° N<br />35.4214° E</p></div>
+      <section class="arrival" id="arrival" aria-labelledby="arrival-title" data-section="arrival">
+        <div class="arrival-copy reveal"><p class="eyebrow on-dark">Arrival made simple</p><h2 id="arrival-title">Know where<br />the road <em>leads.</em></h2><p>Valley Resort is located inside the Wadi Rum Protected Area in Aqaba, Jordan. The team can help you plan the final part of your arrival.</p><div class="arrival-actions"><a class="button button-outline" href="https://www.google.com/maps/dir/?api=1&destination=Wadi+Rum,+Jordan" target="_blank" rel="noreferrer">Open directions <span aria-hidden="true">↗</span></a><a class="text-link on-dark-link" href="https://wa.me/9620791206120">Ask the team on WhatsApp <span aria-hidden="true">↗</span></a></div><dl class="arrival-facts"><div><dt>Region</dt><dd>Aqaba, Jordan</dd></div><div><dt>Setting</dt><dd>Wadi Rum Protected Area</dd></div><div><dt>Coordinates</dt><dd>29.5721° N · 35.4214° E</dd></div></dl></div>
+        <div class="route-map" role="img" aria-label="Schematic journey map showing separate routes from Amman and Aqaba converging at Valley Resort in Wadi Rum">
+          <div class="route-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+          <svg class="route-paths" viewBox="0 0 800 850" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M150 145 C175 330 330 555 615 675" />
+            <path d="M150 690 C310 755 475 735 615 675" />
+            <circle cx="150" cy="145" r="8" />
+            <circle cx="150" cy="690" r="8" />
+            <circle class="destination-ring" cx="615" cy="675" r="14" />
+            <circle class="destination-dot" cx="615" cy="675" r="5" />
+          </svg>
+          <div class="route-place route-amman"><span>01</span><strong>Amman</strong><small>South to Wadi Rum · approx. 4 hours</small></div>
+          <div class="route-place route-aqaba"><span>02</span><strong>Aqaba</strong><small>North to Wadi Rum · under 1 hour</small></div>
+          <div class="route-place route-valley"><span>03</span><strong>Valley Resort</strong><small>Inside Wadi Rum Protected Area</small></div>
+          <p>Two origins. One destination.<br /><span>Schematic journey map · not to scale</span></p>
+        </div>
       </section>
 
-      <section class="reviews section" id="reviews" aria-labelledby="reviews-title"><div class="shell reviews-grid reveal"><div><p class="micro">Guest reviews</p><h2 id="reviews-title">Leave with stories<br />worth <em>telling.</em></h2></div><a class="review-card" href="http://www.tripadvisor.com/Hotel_Review-g303973-d27489603-Reviews-Valley_Resort-Wadi_Rum_Al_Aqabah_Governorate.html" target="_blank" rel="noreferrer"><div class="review-stars" aria-label="Five stars">★★★★★</div><p>Experience Valley Resort through our guests’ eyes.</p><div><span><strong>45</strong> independent reviews</span><b>View on Tripadvisor ↗</b></div></a></div></section>
+      <section class="reviews section" id="reviews" aria-labelledby="reviews-title" data-section="reviews">
+        <div class="shell reviews-layout"><div class="reviews-title reveal"><p class="eyebrow">Independent perspective</p><h2 id="reviews-title">See Valley through<br />the guests who <em>stayed.</em></h2><p>Explore first-hand accounts on Valley Resort’s independent Tripadvisor listing.</p></div><a class="proof-card reveal" href="http://www.tripadvisor.com/Hotel_Review-g303973-d27489603-Reviews-Valley_Resort-Wadi_Rum_Al_Aqabah_Governorate.html" target="_blank" rel="noreferrer"><span class="proof-source">Tripadvisor · Independent listing</span><strong>45</strong><p>independent reviews</p><div><span>Read guest accounts</span><b aria-hidden="true">↗</b></div></a></div>
+      </section>
 
       <section class="practical section" aria-labelledby="practical-title">
-        <div class="shell practical-heading reveal"><p class="micro light">Before you arrive</p><h2 id="practical-title">Good to know.</h2></div>
-        <div class="shell practical-grid reveal">
-          <article class="info-group"><button type="button" aria-expanded="false"><span>01</span><strong>Arrival</strong><i aria-hidden="true"></i></button><div class="info-content"><p>Check-in from 15:00</p><p>Check-out by 12:00</p><p>Airport transfer available</p></div></article>
-          <article class="info-group"><button type="button" aria-expanded="false"><span>02</span><strong>Included</strong><i aria-hidden="true"></i></button><div class="info-content"><p>Wi-Fi internet access</p><p>24/7 security</p><p>Morning coffee and tea</p></div></article>
-          <article class="info-group"><button type="button" aria-expanded="false"><span>03</span><strong>At the resort</strong><i aria-hidden="true"></i></button><div class="info-content"><p>Outdoor pool</p><p>Table games and gym</p><p>Non-smoking rooms</p></div></article>
-          <article class="info-group"><button type="button" aria-expanded="false"><span>04</span><strong>On request</strong><i aria-hidden="true"></i></button><div class="info-content"><p>Room service and in-room dining</p><p>Laundry and luggage room</p><p>Travel desk and currency exchange</p></div></article>
+        <div class="shell practical-layout">
+          <div class="practical-heading reveal"><p class="eyebrow on-dark">Before you arrive</p><h2 id="practical-title">Good to know.</h2><p>Essential information, grouped for quick scanning.</p></div>
+          <div class="accordion reveal">
+            <article class="info-group is-open"><h3><button id="info-trigger-1" type="button" aria-expanded="true" aria-controls="info-panel-1"><span>01</span><strong>Arrival</strong><i aria-hidden="true"></i></button></h3><div class="info-panel" id="info-panel-1" role="region" aria-labelledby="info-trigger-1"><p>Check-in from 15:00</p><p>Check-out by 12:00</p><p>Airport transfer available</p></div></article>
+            <article class="info-group"><h3><button id="info-trigger-2" type="button" aria-expanded="false" aria-controls="info-panel-2"><span>02</span><strong>Included</strong><i aria-hidden="true"></i></button></h3><div class="info-panel" id="info-panel-2" role="region" aria-labelledby="info-trigger-2" hidden><p>Wi-Fi internet access</p><p>24/7 security</p><p>Morning coffee and tea</p></div></article>
+            <article class="info-group"><h3><button id="info-trigger-3" type="button" aria-expanded="false" aria-controls="info-panel-3"><span>03</span><strong>At the resort</strong><i aria-hidden="true"></i></button></h3><div class="info-panel" id="info-panel-3" role="region" aria-labelledby="info-trigger-3" hidden><p>Outdoor pool</p><p>Table games and gym</p><p>Non-smoking rooms</p></div></article>
+            <article class="info-group"><h3><button id="info-trigger-4" type="button" aria-expanded="false" aria-controls="info-panel-4"><span>04</span><strong>On request</strong><i aria-hidden="true"></i></button></h3><div class="info-panel" id="info-panel-4" role="region" aria-labelledby="info-trigger-4" hidden><p>Room service and in-room dining</p><p>Laundry and luggage room</p><p>Travel desk and currency exchange</p></div></article>
+          </div>
         </div>
       </section>
 
-      <section class="final-cta" aria-labelledby="final-title"><div class="final-shade"></div><div class="shell final-content reveal"><p class="micro light">Your place beneath the stars</p><h2 id="final-title">Stay for the silence<br /><em>after sunset.</em></h2><a class="primary-button light-button" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check availability <span aria-hidden="true">↗</span></a></div></section>
+      <section class="final-cta" aria-labelledby="final-title"><div class="final-scrim"></div><div class="shell final-content reveal"><p class="eyebrow on-dark">The desert after dark</p><h2 id="final-title">Stay for the silence<br /><em>after sunset.</em></h2><div class="final-row"><div class="final-recap"><span>Wadi Rum</span><span>Three stay types</span><span>Direct availability</span></div><a class="button button-clay" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check availability <span aria-hidden="true">↗</span></a></div></div></section>
     </main>
 
-    <footer class="footer"><div class="shell footer-top"><a class="footer-brand" href="#home"><img src="assets/valley-logo.webp" alt="Valley Resort" /></a><div class="footer-links"><div><p class="micro">Explore</p><a href="#stays">Stays</a><a href="#experience">Experiences</a><a href="#dining">Dining</a></div><div><p class="micro">Plan</p><a href="#arrival">Getting here</a><a href="#reviews">Reviews</a><a href="https://valley-resort.com/facilities">Facilities</a></div><div><p class="micro">Connect</p><a href="https://www.instagram.com/valley.resort/">Instagram</a><a href="https://wa.me/9620791206120">WhatsApp</a><a href="mailto:reservation@valley-resort.com">Email</a></div></div><div class="footer-address"><p>Wadi Rum Protected Area<br />Aqaba, Jordan</p><a href="tel:+962791206120">+962 79 120 6 120</a></div></div><div class="shell footer-bottom"><span>© 2026 Valley Resort</span><span>29.57° N · 35.42° E</span><a href="#home">Back to top ↑</a></div></footer>
-    <a class="mobile-sticky-cta" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer">Check availability <span aria-hidden="true">↗</span></a>
+    <footer class="footer"><div class="shell footer-main"><a class="footer-brand" href="#home"><img src="assets/valley-logo.webp" alt="Valley Resort" /></a><div class="footer-links"><div><p>Explore</p><a href="#stays">Stays</a><a href="#experience">Experience</a><a href="#dining">Dining</a></div><div><p>Plan</p><a href="#arrival">Getting here</a><a href="#reviews">Reviews</a><a href="https://valley-resort.com/facilities">Facilities</a></div><div><p>Connect</p><a href="https://www.instagram.com/valley.resort/">Instagram</a><a href="https://wa.me/9620791206120">WhatsApp</a><a href="mailto:reservation@valley-resort.com">Email</a></div></div><div class="footer-address"><p>Wadi Rum Protected Area<br />Aqaba, Jordan</p><a href="tel:+962791206120">+962 79 120 6 120</a></div></div><div class="shell footer-base"><span>© 2026 Valley Resort</span><span>29.57° N · 35.42° E</span><a href="#home">Back to top ↑</a></div></footer>
+    <a class="mobile-dock" href="https://us2.cloudbeds.com/reservation/uZ2Zqu" target="_blank" rel="noreferrer"><span>Check availability</span><b aria-hidden="true">↗</b></a>
     <script src="script.js"></script>
   </body>
 </html>
