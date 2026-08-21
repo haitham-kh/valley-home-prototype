@@ -1,101 +1,127 @@
-const hero = document.querySelector('.hero');
-const heroImages = ['assets/hero.jpg', 'assets/stay.jpg', 'assets/experience.jpg'];
-let heroIndex = 0;
+const header = document.querySelector('[data-header]');
+const menuButton = document.querySelector('.menu-button');
+const mobileMenu = document.querySelector('.mobile-menu');
+const stickyCta = document.querySelector('.mobile-sticky-cta');
 
-function changeHero(direction) {
-  heroIndex = (heroIndex + direction + heroImages.length) % heroImages.length;
-  hero.style.backgroundImage = `linear-gradient(90deg,rgba(9,9,7,.52),rgba(9,9,7,.08) 63%,rgba(9,9,7,.32)),url("${heroImages[heroIndex]}")`;
-  document.querySelector('.hero-credit').textContent = `0${heroIndex + 1} — Valley Resort`;
+function setMenu(open) {
+  menuButton.setAttribute('aria-expanded', String(open));
+  mobileMenu.setAttribute('aria-hidden', String(!open));
+  mobileMenu.classList.toggle('is-open', open);
+  document.body.classList.toggle('menu-open', open);
+  menuButton.querySelector('span').textContent = open ? 'Close' : 'Menu';
 }
 
-document.querySelector('.hero-arrow.previous').addEventListener('click', () => changeHero(-1));
-document.querySelector('.hero-arrow.next').addEventListener('click', () => changeHero(1));
-
-const gallery = [
-  { image: 'assets/experience.jpg', alt: 'Bedouin firepit at Valley Resort', caption: 'Firelight, stories, and the desert night.' },
-  { image: 'assets/stay.jpg', alt: 'Valley Resort suite terrace', caption: 'Private terraces shaped around the view.' },
-  { image: 'assets/hero.jpg', alt: 'Valley Resort in Wadi Rum', caption: 'A resort set between sandstone and open sky.' }
-];
-let galleryIndex = 0;
-
-function changeGallery(nextIndex) {
-  galleryIndex = (nextIndex + gallery.length) % gallery.length;
-  const item = gallery[galleryIndex];
-  const image = document.querySelector('#galleryImage');
-  image.src = item.image;
-  image.alt = item.alt;
-  document.querySelector('#galleryCaption').textContent = item.caption;
-  document.querySelectorAll('[data-gallery]').forEach((button, index) => button.classList.toggle('is-active', index === galleryIndex));
-}
-
-document.querySelector('.gallery-prev').addEventListener('click', () => changeGallery(galleryIndex - 1));
-document.querySelector('.gallery-next').addEventListener('click', () => changeGallery(galleryIndex + 1));
-document.querySelectorAll('[data-gallery]').forEach(button => button.addEventListener('click', () => changeGallery(Number(button.dataset.gallery))));
-
-const navigation = document.querySelector('.nav');
-const menuToggle = document.querySelector('.menu-toggle');
-menuToggle.addEventListener('click', () => {
-  const isOpen = navigation.classList.toggle('is-open');
-  menuToggle.setAttribute('aria-expanded', String(isOpen));
+menuButton.addEventListener('click', () => {
+  setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
 });
-document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', () => {
-  navigation.classList.remove('is-open');
-  menuToggle.setAttribute('aria-expanded', 'false');
-}));
 
-const rooms = [
-  { image: 'assets/hero.jpg', number: '01 — Desert stay', name: 'Dune Room', meta: '40m² · King bed · Sandstone patio', alt: 'Dune Room at Valley Resort' },
-  { image: 'assets/experience.jpg', number: '02 — Stargazing stay', name: 'Martian Dome', meta: '45m² · Stargazing roof · Panoramic AC', alt: 'Martian Dome at Valley Resort' },
-  { image: 'assets/stay.jpg', number: '03 — Signature stay', name: 'Valley Two-bedroom Suite', meta: '104m² · Two bedrooms · Private terrace', alt: 'Valley Resort suite with Wadi Rum view' }
+mobileMenu.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => setMenu(false));
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setMenu(false);
+});
+
+function updateHeader() {
+  const scrolled = window.scrollY > 35;
+  header.classList.toggle('is-scrolled', scrolled);
+  stickyCta.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.72);
+}
+
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();
+
+const stays = [
+  {
+    image: 'assets/domes.jpg',
+    alt: 'Martian Domes at Valley Resort in warm evening light',
+    description: 'Geometric domes frame the desert by day and the Wadi Rum sky after dark.',
+    href: 'https://valley-resort.com/martain-rooms-double',
+    label: 'Explore Martian Domes',
+  },
+  {
+    image: 'assets/terrace.jpg',
+    alt: 'Private terrace outside a Dune Room at Valley Resort',
+    description: 'Grounded, generous rooms that open directly onto a private sandstone patio.',
+    href: 'https://valley-resort.com/dune-rooms-double',
+    label: 'Explore Dune Rooms',
+  },
+  {
+    image: 'assets/resort-path.jpg',
+    alt: 'Valley Resort suites and pathways among palms and sandstone',
+    description: 'A spacious two-bedroom retreat made for families, friends, and longer stays.',
+    href: 'https://valley-resort.com/valley-two-bedroom-suits',
+    label: 'Explore Valley Suites',
+  },
 ];
-const roomImage = document.querySelector('#roomImage');
-function showRoom(index) {
-  const room = rooms[index];
-  roomImage.classList.add('is-changing');
+
+const stayImage = document.querySelector('#stay-image');
+const stayDescription = document.querySelector('#stay-description');
+const stayLink = document.querySelector('#stay-link');
+const stayCurrent = document.querySelector('#stay-current');
+const stayButtons = [...document.querySelectorAll('[data-stay]')];
+
+function showStay(index) {
+  const stay = stays[index];
+  if (!stay || stayButtons[index].classList.contains('is-active')) return;
+
+  stayImage.classList.add('is-changing');
   window.setTimeout(() => {
-    roomImage.src = room.image;
-    roomImage.alt = room.alt;
-    document.querySelector('#roomNumber').textContent = room.number;
-    document.querySelector('#roomName').textContent = room.name;
-    document.querySelector('#roomMeta').textContent = room.meta;
-    roomImage.classList.remove('is-changing');
-  }, 150);
-  document.querySelectorAll('.room-option').forEach((button, buttonIndex) => button.classList.toggle('is-active', buttonIndex === index));
+    stayImage.src = stay.image;
+    stayImage.alt = stay.alt;
+    stayDescription.textContent = stay.description;
+    stayLink.href = stay.href;
+    stayLink.firstChild.textContent = `${stay.label} `;
+    stayCurrent.textContent = String(index + 1).padStart(2, '0');
+    stayImage.classList.remove('is-changing');
+  }, 180);
+
+  stayButtons.forEach((button, buttonIndex) => {
+    const active = buttonIndex === index;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-selected', String(active));
+  });
 }
-document.querySelectorAll('.room-option').forEach(button => {
-  const index = Number(button.dataset.room);
-  button.addEventListener('mouseenter', () => showRoom(index));
-  button.addEventListener('focus', () => showRoom(index));
-  button.addEventListener('click', () => showRoom(index));
+
+stayButtons.forEach((button, index) => {
+  button.addEventListener('click', () => showStay(index));
+  button.addEventListener('mouseenter', () => showStay(index));
+  button.addEventListener('focus', () => showStay(index));
 });
 
-const bookingModal = document.querySelector('.booking-modal');
-const closeBookingModal = () => { bookingModal.classList.remove('is-open'); bookingModal.setAttribute('aria-hidden', 'true'); };
-document.querySelectorAll('[data-booking]').forEach(trigger => trigger.addEventListener('click', event => {
-  event.preventDefault();
-  bookingModal.classList.add('is-open');
-  bookingModal.setAttribute('aria-hidden', 'false');
-  bookingModal.querySelector('input').focus();
-}));
-document.querySelector('.modal-close').addEventListener('click', closeBookingModal);
-bookingModal.addEventListener('click', event => { if (event.target === bookingModal) closeBookingModal(); });
-document.addEventListener('keydown', event => { if (event.key === 'Escape') closeBookingModal(); });
-document.querySelectorAll('[data-booking-form]').forEach(form => form.addEventListener('submit', event => {
-  event.preventDefault();
-  bookingModal.classList.add('is-open');
-  bookingModal.setAttribute('aria-hidden', 'false');
-  bookingModal.querySelector('.form-feedback').textContent = 'Availability will be confirmed by the Valley reservations team.';
-}));
+document.querySelectorAll('.info-group button').forEach((button) => {
+  button.addEventListener('click', () => {
+    if (!window.matchMedia('(max-width: 720px)').matches) return;
+    const group = button.closest('.info-group');
+    const open = !group.classList.contains('is-open');
 
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!reduceMotion) {
-  let motionFrame;
-  window.addEventListener('scroll', () => {
-    if (motionFrame) return;
-    motionFrame = window.requestAnimationFrame(() => {
-      const heroOffset = Math.min(window.scrollY, window.innerHeight) / window.innerHeight;
-      hero.style.backgroundPosition = `center calc(50% + ${heroOffset * 5}%)`;
-      motionFrame = undefined;
+    document.querySelectorAll('.info-group').forEach((item) => {
+      item.classList.remove('is-open');
+      item.querySelector('button').setAttribute('aria-expanded', 'false');
     });
-  }, { passive: true });
+
+    if (open) {
+      group.classList.add('is-open');
+      button.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reveals = document.querySelectorAll('.reveal');
+
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  reveals.forEach((element) => element.classList.add('is-visible'));
+} else {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+  reveals.forEach((element) => observer.observe(element));
 }
